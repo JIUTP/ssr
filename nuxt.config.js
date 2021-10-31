@@ -3,7 +3,7 @@
  * @Author       : RenChen
  * @Date         : 2021-10-30 14:26:22
  * @LastEditors  : RenChen
- * @LastEditTime : 2021-10-30 15:43:46
+ * @LastEditTime : 2021-10-31 17:13:56
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -22,6 +22,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://mock.yonyoucloud.com/mock/21062/699pic'
+  },
 
   router: {
     middleware: 'auth'
@@ -33,6 +36,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {
+      src: '~/plugins/axios',
+      ssr: true
+    },
+    '~/plugins/api'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,7 +54,20 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
+
+  axios: {
+    proxy: true,
+    credentials: true
+  },
+
+  proxy: {
+    '/699pic/': {
+      target: 'https://mock.yonyoucloud.com/mock/21062',
+      changeOrigin: true
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

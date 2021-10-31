@@ -69,3 +69,17 @@ For detailed explanation on how things work, check out the [documentation](https
       page/一级展示/二级展示
                   /index.vue  会在一级展示
     
+  路由守卫
+    前置  依赖中间件middleware, plugins插件
+      全局守卫： nuxt.config 指向middleware
+              layouts定义中间件
+      组件独享守卫：
+              middleware
+      插件全局守卫
+              app.router.beforeEach
+    
+    后置
+      组件独享守卫
+              beforeRouteLeave钩子
+      插件全局守卫
+              app.router.afterEach
