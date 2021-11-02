@@ -3,11 +3,10 @@
  * @Author       : RenChen
  * @Date         : 2021-10-30 22:46:08
  * @LastEditors  : RenChen
- * @LastEditTime : 2021-11-01 22:11:30
+ * @LastEditTime : 2021-11-02 13:10:06
  */
-// import * as apis from '~/api'
 
-export default ({ $axios, error }) => {
+export default ({ $axios, store, error }) => {
   $axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
   if (process.client) {
     $axios.defaults.withCredentials = true
@@ -21,6 +20,14 @@ export default ({ $axios, error }) => {
   // 请求拦截
   $axios.interceptors.request.use(config => {
     // 在发送请求之前做些什么
+    if (config?.isToken) {
+      if (store.state.user.token) {
+        config.headers.token = store.state.user.token
+      } else {
+        // 跳登录
+      }
+    }
+
     return config
   }, error => {
     return Promise.reject(error)
@@ -89,32 +96,4 @@ export default ({ $axios, error }) => {
       }
     }
   )
-
-  // api 引入
-  // const API = {}
-
-  // Object.keys(apis).forEach(key => {
-  //   API[key] = (data, header, _url = '') => {
-  //     if (_url) { // 改写url
-  //       apis[key].url = _url
-  //     }
-
-  //     if (header) {
-  //       apis[key].header = header
-  //     }
-
-  //     if (apis[key]?.token) {
-  //       apis[key].header.token = store.state.user.token
-  //     }
-
-  //     if (data) {
-  //       if (apis[key].method === 'GET') {
-  //         apis[key].params = data
-  //       }
-  //       apis[key].data = data
-  //     }
-
-  //     return $axios(apis[key])
-  //   }
-  // })
 }

@@ -3,7 +3,7 @@
  * @Author       : RenChen
  * @Date         : 2021-10-30 14:26:22
  * @LastEditors  : RenChen
- * @LastEditTime : 2021-10-31 21:11:09
+ * @LastEditTime : 2021-11-02 14:22:52
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -40,7 +40,8 @@ export default {
       src: '~/plugins/axios',
       ssr: true
     },
-    '~/plugins/api'
+    '~/plugins/api',
+    '~/plugins/lodash'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
