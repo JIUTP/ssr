@@ -3,10 +3,10 @@
  * @Author       : RenChen
  * @Date         : 2021-10-30 20:44:02
  * @LastEditors  : RenChen
- * @LastEditTime : 2021-10-31 20:18:21
+ * @LastEditTime : 2021-10-31 20:39:14
 -->
 <template>
-  <div>首页</div>
+  <div class="box">首页</div>
 </template>
 
 <script>
@@ -19,3 +19,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+$blue: #0000ff;
+.box{
+  color: $blue;
+}
+</style>

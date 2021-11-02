@@ -3,8 +3,9 @@
  * @Author       : RenChen
  * @Date         : 2021-10-30 22:46:08
  * @LastEditors  : RenChen
- * @LastEditTime : 2021-10-31 15:19:45
+ * @LastEditTime : 2021-11-01 22:11:30
  */
+// import * as apis from '~/api'
 
 export default ({ $axios, error }) => {
   $axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -20,7 +21,6 @@ export default ({ $axios, error }) => {
   // 请求拦截
   $axios.interceptors.request.use(config => {
     // 在发送请求之前做些什么
-
     return config
   }, error => {
     return Promise.reject(error)
@@ -89,4 +89,32 @@ export default ({ $axios, error }) => {
       }
     }
   )
+
+  // api 引入
+  // const API = {}
+
+  // Object.keys(apis).forEach(key => {
+  //   API[key] = (data, header, _url = '') => {
+  //     if (_url) { // 改写url
+  //       apis[key].url = _url
+  //     }
+
+  //     if (header) {
+  //       apis[key].header = header
+  //     }
+
+  //     if (apis[key]?.token) {
+  //       apis[key].header.token = store.state.user.token
+  //     }
+
+  //     if (data) {
+  //       if (apis[key].method === 'GET') {
+  //         apis[key].params = data
+  //       }
+  //       apis[key].data = data
+  //     }
+
+  //     return $axios(apis[key])
+  //   }
+  // })
 }

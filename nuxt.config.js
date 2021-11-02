@@ -3,7 +3,7 @@
  * @Author       : RenChen
  * @Date         : 2021-10-30 14:26:22
  * @LastEditors  : RenChen
- * @LastEditTime : 2021-10-31 17:13:56
+ * @LastEditTime : 2021-10-31 21:11:09
  */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -54,7 +54,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
+    'cookie-universal-nuxt'
   ],
 
   axios: {
@@ -69,6 +71,11 @@ export default {
     }
   },
 
+  styleResources: {
+    scss: [
+      '~/assets/scss/global.scss'
+    ]
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
